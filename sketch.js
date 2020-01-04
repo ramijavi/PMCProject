@@ -29,15 +29,15 @@ function preload() {
     spaceFont = loadFont('spaceAge.otf');
     
     // Load planets' textures
-    sunTexture = loadImage('sunSurface.jpg');
-    planetTextures[0] = loadImage('mercurySurface.png');
-    planetTextures[1] = loadImage('venusSurface.jpg');
-    planetTextures[2] = loadImage('earthSurface.jpg');
-    planetTextures[3] = loadImage('marsSurface.png');
-    planetTextures[4] = loadImage('jupiterSurface.jpg');
-    planetTextures[5] = loadImage('saturnSurface.jpg');
-    planetTextures[6] = loadImage('uranusSurface.jpg');
-    planetTextures[7] = loadImage('neptuneSurface.jpg');
+    sunTexture = loadImage('surfaceImages/sunSurface.jpg');
+    planetTextures[0] = loadImage('surfaceImages/mercurySurface.png');
+    planetTextures[1] = loadImage('surfaceImages/venusSurface.jpg');
+    planetTextures[2] = loadImage('surfaceImages/earthSurface.jpg');
+    planetTextures[3] = loadImage('surfaceImages/marsSurface.png');
+    planetTextures[4] = loadImage('surfaceImages/jupiterSurface.jpg');
+    planetTextures[5] = loadImage('surfaceImages/saturnSurface.jpg');
+    planetTextures[6] = loadImage('surfaceImages/uranusSurface.jpg');
+    planetTextures[7] = loadImage('surfaceImages/neptuneSurface.jpg');
 }
 
 // Set up function
@@ -137,19 +137,19 @@ function draw(){
     // Set up the camera using the values from the sliders
     camera(sliders2[0].value(), sliders2[1].value(), sliders2[2].value(), 0, 0, 0, 0, 1, 0);
     
-    // If indicated by user, turn on point light
-    // This point light imitates the light radiated by sun, only hitting the planets
-    // on the side that faces the sun
-    if(pntLight){
-        pointLight(250, 250, 250, 0, 0, 0);
-    }
-    
     // Draw the sun, using the preloaded image of its surface as a texture
     push();
     translate(0, 0, 0);
     texture(sunTexture);
     sphere((sunDiameter/2)/3000);
     pop();
+    
+    // If indicated by user, turn on point light
+    // This point light imitates the light radiated by sun, only hitting the planets
+    // on the side that faces the sun
+    if(pntLight){
+        pointLight(250, 250, 250, 0, 0, 0);
+    }
     
     // Loop through every element of the orbitDistances array
     for(i = 0; i < orbitDistances.length; i++){
